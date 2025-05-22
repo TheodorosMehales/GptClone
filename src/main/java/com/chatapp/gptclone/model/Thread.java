@@ -1,0 +1,20 @@
+package com.chatapp.gptclone.model;
+
+
+import jakarta.persistence.*; import lombok.*; //import javax.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import java.time.Instant;
+
+@Entity @Data @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "threads")
+ public class Thread  {
+ @Id     @GeneratedValue(strategy = GenerationType.IDENTITY)
+ private Long id;
+ @CreationTimestamp     @Column(name = "created_at", nullable = false, updatable = false)
+ private Instant createdAt;
+ @ManyToOne(fetch = FetchType.LAZY, optional = false)     @JoinColumn(name = "user_id", nullable = false)
+ private User user;
+ @Column(name = "name", nullable = false, unique = true)
+ private String name; }
