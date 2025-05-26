@@ -62,4 +62,5 @@ public class ModelsService {
             throw new CloneException("Error deleting model", HttpStatus.INTERNAL_SERVER_ERROR, e);
         }
     }
+
 }

@@ -14,6 +14,9 @@ public class MessagesController {
     @Autowired
     private MessagesService messagesService;
 
+
+
+
     @GetMapping
     public ResponseEntity<List<Message>> getAllMessages() throws CloneException {
         return ResponseEntity.ok(messagesService.findAllMessages());
@@ -24,11 +27,21 @@ public class MessagesController {
         return ResponseEntity.ok(messagesService.findMessageById(id));
     }
 
-    @PostMapping
-    public ResponseEntity<Message> createMessage(@RequestBody Message message) throws CloneException {
-        Message created = messagesService.createMessage(message);
-        return ResponseEntity.status(201).body(created);
+//    @PostMapping
+//    public ResponseEntity<Message> createMessage(@RequestBody Message message) throws CloneException {
+//        Message created = messagesService.createMessage(message);
+//        return ResponseEntity.status(201).body(created);
+//    }
+
+    @PostMapping("/threads/{threadId}")
+    public ResponseEntity<Message> sendMessage(@PathVariable Long threadId,
+                                               @RequestBody java.util.Map<String, String> payload)
+            throws CloneException {
+        String content = payload.get("content");
+        Message reply = messagesService.sendMessage(threadId, content);
+        return ResponseEntity.status(201).body(reply);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Message> updateMessage(@PathVariable Long id, @RequestBody Message message) throws CloneException {
