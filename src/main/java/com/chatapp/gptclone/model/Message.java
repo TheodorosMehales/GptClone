@@ -1,11 +1,12 @@
 package com.chatapp.gptclone.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 //import javax.persistence.*;
 
-
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity
 @Data
 @NoArgsConstructor

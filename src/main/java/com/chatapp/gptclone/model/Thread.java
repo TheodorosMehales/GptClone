@@ -1,10 +1,12 @@
 package com.chatapp.gptclone.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*; import lombok.*; //import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @Entity @Data @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -12,9 +14,14 @@ import java.time.Instant;
  public class Thread  {
  @Id     @GeneratedValue(strategy = GenerationType.IDENTITY)
  private Long id;
- @CreationTimestamp     @Column(name = "created_at", nullable = false, updatable = false)
+
+ @CreationTimestamp
+ @Column(name = "created_at", nullable = false, updatable = false)
  private Instant createdAt;
- @ManyToOne(fetch = FetchType.LAZY, optional = false)     @JoinColumn(name = "user_id", nullable = false)
+
+ @ManyToOne(fetch = FetchType.LAZY, optional = false)
+ @JoinColumn(name = "user_id", nullable = false)
  private User user;
+
  @Column(name = "name", nullable = false, unique = true)
  private String name; }

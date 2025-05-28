@@ -15,8 +15,6 @@ public class MessagesController {
     private MessagesService messagesService;
 
 
-
-
     @GetMapping
     public ResponseEntity<List<Message>> getAllMessages() throws CloneException {
         return ResponseEntity.ok(messagesService.findAllMessages());

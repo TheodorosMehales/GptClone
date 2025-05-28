@@ -12,8 +12,13 @@ import java.util.List;
 @Service
 public class ThreadsService {
 
-    @Autowired
+
     private ThreadsRepository threadRepo;
+
+    @Autowired
+    public ThreadsService(ThreadsRepository threadRepo) {
+        this.threadRepo = threadRepo;
+    }
 
     public List<Thread> findAllThreads() throws CloneException {
         try {
