@@ -1,6 +1,6 @@
 package com.chatapp.gptclone.model.dto;
 
-// ChatMessage.java
+
 public class ChatMessage {
     private String role;
     private String content;

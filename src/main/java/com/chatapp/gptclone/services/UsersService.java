@@ -15,8 +15,13 @@ import java.util.List;
 @Service
 public class UsersService implements UserDetailsService {
 
+
+    private final UsersRepository userRepo;
+
     @Autowired
-    private UsersRepository userRepo;
+    public UsersService(UsersRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
     public List<User> findAllUsers() throws CloneException {
         try {

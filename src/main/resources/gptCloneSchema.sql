@@ -31,3 +31,4 @@ CREATE TABLE models (
                         name  VARCHAR(100) PRIMARY KEY,
                         url   TEXT         NOT NULL
 );
+

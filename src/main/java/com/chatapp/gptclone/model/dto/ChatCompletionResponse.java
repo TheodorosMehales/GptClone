@@ -13,7 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ChatCompletionResponse {
     private String id;
-    private String object;
+    @JsonProperty("object")
+    private String objectType;
     private long created;
     private String model;
     private List<Choice> choices;

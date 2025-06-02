@@ -33,9 +33,9 @@ public class MessagesController {
 
     @PostMapping("/threads/{threadId}")
     public ResponseEntity<Message> sendMessage(@PathVariable Long threadId,
-                                               @RequestBody java.util.Map<String, String> payload)
+                                               @RequestBody Message payload)
             throws CloneException {
-        String content = payload.get("content");
+        String content = payload.getContent();
         Message reply = messagesService.sendMessage(threadId, content);
         return ResponseEntity.status(201).body(reply);
     }

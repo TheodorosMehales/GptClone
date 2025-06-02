@@ -56,9 +56,9 @@ public class MessagesService {
     }
 
     public Message sendMessage(Long threadId, String userContent) throws CloneException {
-        if (!openaiEnabled) {
-            throw new CloneException("OpenAI integration is disabled", HttpStatus.SERVICE_UNAVAILABLE, null);
-        }
+//        if (!openaiEnabled) {
+//            throw new CloneException("OpenAI integration is disabled", HttpStatus.SERVICE_UNAVAILABLE, null);
+//        }
 
         Thread thread = threadRepo.findById(threadId)
                 .orElseThrow(() -> new CloneException("Thread not found", HttpStatus.NOT_FOUND, null));

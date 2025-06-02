@@ -15,7 +15,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = "com.chatapp.gptclone"
+)
 @ComponentScan(basePackageClasses = {
         UsersController.class,
         UsersService.class,
@@ -26,12 +28,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         GlobalExceptionHandler.class,
         GptCloneApplication.class,
 })
-@EnableJpaRepositories(basePackageClasses = {
-        UsersRepository.class
-})
-@EntityScan(basePackageClasses = {
-        User.class
-})
+@EnableJpaRepositories(
+        basePackages = "com.chatapp.gptclone.repositories"
+)
+@EntityScan(basePackages = "com.chatapp.gptclone.model"
+)
 public class GptCloneApplication {
 
     public static void main(String[] args) {
